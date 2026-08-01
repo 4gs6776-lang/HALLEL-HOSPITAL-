@@ -1,5 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Dark mode toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const applyTheme = (isDark) => {
+    document.body.classList.toggle('dark-mode', isDark);
+    if (themeToggle) {
+      themeToggle.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+    }
+  };
+  let savedTheme = null;
+  try { savedTheme = localStorage.getItem('hallel-theme'); } catch (e) {}
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(savedTheme ? savedTheme === 'dark' : prefersDark);
+  themeToggle && themeToggle.addEventListener('click', () => {
+    const isDark = !document.body.classList.contains('dark-mode');
+    applyTheme(isDark);
+    try { localStorage.setItem('hallel-theme', isDark ? 'dark' : 'light'); } catch (e) {}
+  });
+
   // Preloader
   const preloader = document.getElementById('preloader');
   window.addEventListener('load', () => {
