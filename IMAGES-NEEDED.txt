@@ -1,0 +1,15 @@
+NOTE: ai-icon.png is already included in this folder — no action needed for it.
+
+Add these image files directly into the repo root (same level as
+index.html, about.html, etc.) using these exact filenames:
+
+  logo.png       - hospital logo (header, footer, favicon, preloader)
+  about.jpg      - hospital/team photo (homepage hero + About page)
+  anosike.jpg    - Dr. Anosike photo (Doctors page)
+  abel.jpg       - Dr. Abel photo (Doctors page)
+  chigozie.jpg   - Dr. Chigozie photo (Doctors page)
+  patient-1.jpg  - testimonial photo, Chioma Okafor (homepage)
+  patient-2.jpg  - testimonial photo, Emeka Nwosu (homepage)
+  patient-3.jpg  - testimonial photo, Amara Eze (homepage)
+
+Service card images load from Unsplash automatically — no download needed.
