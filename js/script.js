@@ -18,6 +18,31 @@ document.addEventListener('DOMContentLoaded', () => {
     try { localStorage.setItem('hallel-theme', isDark ? 'dark' : 'light'); } catch (e) {}
   });
 
+  // Image lightbox
+  const lightbox = document.createElement('div');
+  lightbox.className = 'lightbox-overlay';
+  lightbox.innerHTML = '<button class="lightbox-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button><img src="" alt="">';
+  document.body.appendChild(lightbox);
+  const lightboxImg = lightbox.querySelector('img');
+  const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+  const openLightbox = (src, alt) => {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeLightbox = () => {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+  document.querySelectorAll('.lightbox-img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
   // Preloader
   const preloader = document.getElementById('preloader');
   window.addEventListener('load', () => {
