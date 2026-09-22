@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hallelhospital.vercel.app/sitemap.xml
